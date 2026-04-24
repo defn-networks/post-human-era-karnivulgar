@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>KARNIVULGAR · POST-HUMAN ERA</title>
-    <!-- authentic industrial & post-human fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@300;400;500;600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
+    <!-- authentic industrial / grotesque fonts, inspired by underground flyers -->
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,107 +14,105 @@
         }
 
         body {
-            background: #030105;
-            background-image: radial-gradient(circle at 15% 30%, rgba(40, 20, 45, 0.6) 0%, #020004 90%);
-            font-family: 'Space Grotesk', 'Inter', monospace;
-            color: #eef2ff;
-            line-height: 1.4;
-            padding: 2rem 1.2rem;
+            background: #05020a;
+            background-image: radial-gradient(circle at 10% 20%, #120b1a 0%, #020003 100%);
+            font-family: 'Red Hat Mono', 'Space Mono', monospace;
+            color: #e0d6f0;
+            padding: 2rem 1.5rem;
             position: relative;
+            line-height: 1.4;
         }
 
-        /* noise texture overlay (poster grit) */
-        body::before {
+        /* distressed texture overlay — vintage poster grain */
+        body::after {
             content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.065'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 999;
-            opacity: 0.4;
             mix-blend-mode: overlay;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 960px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        /* ========= POSTER HERO ========= */
-        .poster-hero {
+        /* ---------- POSTER HERO : MASK + EVENT ---------- */
+        .poster-head {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 3.5rem;
-            border-bottom: 2px solid rgba(188, 155, 255, 0.3);
-            padding-bottom: 2rem;
+            margin-bottom: 3.2rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 2px solid #3d2a5c;
         }
 
-        .event-info {
+        /* event typography — brutalist / industrial */
+        .event-block {
             flex: 2;
-            min-width: 220px;
         }
 
-        .poster-title {
-            font-family: 'Major Mono Display', monospace;
-            font-size: clamp(2.2rem, 8vw, 4rem);
-            font-weight: 500;
+        .posthuman-title {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
             letter-spacing: -0.02em;
-            background: linear-gradient(130deg, #f0eaff, #b27eff, #e6c8ff);
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ede7ff 10%, #b27ce6 60%, #ffd9b5);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 0 12px rgba(170, 100, 255, 0.4);
-            line-height: 1.1;
+            text-shadow: 0 0 6px rgba(160, 100, 255, 0.5);
+            line-height: 1.05;
         }
 
-        .showcase-by {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 3px;
+        .showcase {
+            font-size: 0.85rem;
+            font-weight: 400;
             text-transform: uppercase;
+            letter-spacing: 5px;
             margin-top: 0.6rem;
-            color: #bba8ff;
-            border-left: 3px solid #bc9bff;
+            color: #b6a2e0;
+            border-left: 4px solid #9b6fd9;
             padding-left: 1rem;
         }
 
-        .event-dates {
-            margin-top: 1.5rem;
+        .date-location {
+            margin-top: 1.8rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            font-family: 'Space Grotesk', monospace;
+            gap: 1.2rem;
         }
 
-        .date-venue {
-            background: rgba(20, 12, 28, 0.7);
-            backdrop-filter: blur(4px);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 400;
-            border: 1px solid rgba(188, 155, 255, 0.25);
-            letter-spacing: 0.5px;
+        .pill {
+            background: rgba(20, 10, 30, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid #4a3670;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.8px;
         }
 
-        .date-venue i {
-            font-style: normal;
-            font-weight: 600;
-            color: #d9b8ff;
+        .pill strong {
+            color: #cfb0ff;
+            font-weight: 700;
         }
 
-        /* AUTHENTIC MASK SVG (handcrafted post-human relic) */
-        .mask-container {
+        /* ---------- AUTHENTIC MASK (relic, post-human) ---------- */
+        .mask-figure {
             flex: 1;
-            min-width: 160px;
+            min-width: 170px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -122,84 +120,81 @@
 
         .mask-svg {
             width: 100%;
-            max-width: 220px;
-            filter: drop-shadow(0 0 10px rgba(160, 100, 255, 0.5)) drop-shadow(0 4px 12px rgba(0,0,0,0.6));
-            transition: transform 0.2s ease;
+            max-width: 210px;
+            filter: drop-shadow(0 0 12px #5b3a8e) drop-shadow(2px 4px 12px black);
+            transition: transform 0.25s ease;
         }
 
         .mask-svg:hover {
             transform: scale(1.02);
         }
 
-        /* ========= RELEASE GRID (industrial gallery) ========= */
-        .release-grid {
+        /* ---------- RELEASE CARDS ---------- */
+        .discography {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            margin: 2rem 0 2.5rem;
+            margin: 2rem 0 2rem;
         }
 
-        .release-card {
-            background: rgba(8, 6, 14, 0.65);
-            backdrop-filter: blur(3px);
-            border-radius: 2rem;
+        .release {
+            background: rgba(10, 6, 18, 0.78);
+            backdrop-filter: blur(2px);
+            border: 1px solid #2a1d40;
+            border-radius: 1.8rem;
             padding: 1.2rem 1.5rem;
-            border: 1px solid rgba(188, 155, 255, 0.2);
-            transition: all 0.25s;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
         }
 
-        .release-card:hover {
-            background: rgba(22, 18, 34, 0.85);
-            border-color: #bc9bff;
-            box-shadow: 0 8px 22px rgba(128, 70, 200, 0.2);
+        .release:hover {
+            background: rgba(22, 14, 38, 0.9);
+            border-color: #7c5baa;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
 
         .release-header {
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-            border-left: 4px solid #bc9bff;
+            gap: 0.7rem;
+            margin-bottom: 0.9rem;
+            border-left: 4px solid #b080ff;
             padding-left: 0.8rem;
         }
 
         .release-name {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 1.25rem;
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            color: #f0e9ff;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.18rem;
+            letter-spacing: -0.2px;
+            color: #f1e9ff;
         }
 
-        .label-badge {
-            font-size: 0.65rem;
-            font-weight: 500;
-            background: #1e142c;
-            padding: 0.2rem 0.7rem;
-            border-radius: 30px;
-            color: #bc9bff;
+        .release-tag {
+            background: #1f152e;
+            font-size: 0.6rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
             text-transform: uppercase;
+            font-weight: 500;
+            color: #b78eff;
             letter-spacing: 1px;
-            border: 0.5px solid #3a2b50;
         }
 
         .physical-note {
-            font-size: 0.8rem;
-            color: #bfaaff;
-            margin-top: 0.4rem;
-            padding-left: 0.8rem;
+            background: #140d1f;
+            border-left: 3px solid #b078ff;
+            padding: 0.6rem 1rem;
+            font-size: 0.75rem;
             font-family: monospace;
-            letter-spacing: 0.3px;
-            background: rgba(0,0,0,0.3);
-            display: inline-block;
-            border-radius: 20px;
-            padding: 0.3rem 1rem;
+            color: #cbadff;
+            margin-top: 0.5rem;
+            border-radius: 14px;
+            width: fit-content;
         }
 
         .embed-wrapper {
-            margin-top: 0.8rem;
+            margin-top: 0.7rem;
             width: 100%;
             border-radius: 1rem;
             overflow: hidden;
@@ -209,45 +204,36 @@
             display: block;
             width: 100%;
             border: 0;
-            transition: all 0.2s;
-            border-radius: 12px;
+            border-radius: 14px;
         }
 
-        /* poster-style footer */
-        .exhibition-footer {
-            margin-top: 3.8rem;
+        /* ---------- FOOTER : POSTER CREDITS ---------- */
+        .poster-footer {
+            margin-top: 3.5rem;
             text-align: center;
-            border-top: 1px solid rgba(188, 155, 255, 0.3);
-            padding: 2rem 1rem 1rem;
-            font-size: 0.75rem;
+            border-top: 1px solid #342451;
+            padding: 2rem 1rem 1.2rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 300;
-            color: #9f8fc9;
+            font-weight: 400;
+            color: #8f7bb5;
         }
 
-        .exhibition-footer p {
-            margin: 0.3rem 0;
+        .poster-footer span {
+            color: #cfb9ff;
         }
 
-        .glow-text {
-            color: #d6bbff;
-        }
-
-        @media (max-width: 720px) {
+        /* responsive */
+        @media (max-width: 660px) {
             body {
-                padding: 1.2rem;
+                padding: 1rem;
             }
-            .poster-hero {
+            .poster-head {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+                gap: 1.2rem;
             }
-            .mask-container {
-                align-self: center;
-                margin-top: 0.5rem;
-            }
-            .release-card {
+            .release {
                 padding: 1rem;
             }
             .release-name {
@@ -258,104 +244,104 @@
 </head>
 <body>
 <div class="container">
-    <!-- POSTER INSPIRED SECTION: mask + event details -->
-    <div class="poster-hero">
-        <div class="event-info">
-            <div class="poster-title">POST-HUMAN ERA</div>
-            <div class="showcase-by">a showcase by KARNIVULGAR</div>
-            <div class="event-dates">
-                <span class="date-venue"><i>◉</i> 21 — 23 MEI 2026</span>
-                <span class="date-venue"><i>⌂</i> WISMA JERMAN · SURABAYA</span>
+    <!-- HEADER: mask + event exactly matching poster vibes -->
+    <div class="poster-head">
+        <div class="event-block">
+            <div class="posthuman-title">POST-HUMAN<br>ERA</div>
+            <div class="showcase">a showcase by KARNIVULGAR</div>
+            <div class="date-location">
+                <div class="pill"><strong>21 — 23 MEI 2026</strong></div>
+                <div class="pill"><strong>WISMA JERMAN · SURABAYA</strong></div>
             </div>
         </div>
-        <div class="mask-container">
-            <!-- AUTHENTIC POST-HUMAN MASK (hand drawn geometry, cyber-ritual mask) -->
-            <svg class="mask-svg" viewBox="0 0 240 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="mask-figure">
+            <!-- AUTHENTIC MASK : inspired by ritual post-human carving / cyborg relic -->
+            <svg class="mask-svg" viewBox="0 0 220 250" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="maskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#2a1a42"/>
-                        <stop offset="70%" stop-color="#8c6bb0"/>
-                        <stop offset="100%" stop-color="#c49eff"/>
+                    <linearGradient id="maskMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#2c143d"/>
+                        <stop offset="60%" stop-color="#6943a0"/>
+                        <stop offset="100%" stop-color="#ac86d6"/>
                     </linearGradient>
-                    <filter id="glowMask" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                    <filter id="edgeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="2.5"/>
                         <feMerge>
                             <feMergeNode in="offsetblur" />
                             <feMergeNode in="SourceGraphic" />
                         </feMerge>
                     </filter>
                 </defs>
-                <!-- mask base (cyber-tribal) -->
-                <path d="M70 100 L60 170 L85 195 L120 205 L155 195 L180 170 L170 100 L150 70 L120 55 L90 70 L70 100Z" fill="url(#maskGrad)" stroke="#e0bef0" stroke-width="2.5" stroke-linejoin="round" filter="url(#glowMask)"/>
-                <!-- left eye (organic slit) -->
-                <ellipse cx="98" cy="115" rx="15" ry="10" fill="#020007" stroke="#cfaaff" stroke-width="2"/>
-                <path d="M90 115 L100 112 L107 117 L100 120 Z" fill="#ffdcb0" opacity="0.7"/>
-                <!-- right eye -->
-                <ellipse cx="142" cy="115" rx="15" ry="10" fill="#020007" stroke="#cfaaff" stroke-width="2"/>
-                <path d="M134 115 L144 112 L151 117 L144 120 Z" fill="#ffdcb0" opacity="0.7"/>
-                <!-- ritual scars / tech implants -->
-                <line x1="70" y1="140" x2="85" y2="148" stroke="#d2adff" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="170" y1="140" x2="155" y2="148" stroke="#d2adff" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M110 180 L120 195 L130 180" stroke="#b27eff" stroke-width="2.5" fill="none"/>
-                <!-- exhale tubes -->
-                <rect x="112" y="200" width="16" height="18" rx="5" fill="#110b1c" stroke="#b57eff" stroke-width="1.5"/>
-                <circle cx="120" cy="210" r="3" fill="#ffdd88" opacity="0.9"/>
-                <path d="M112 205 L95 212 M128 205 L145 212" stroke="#9b6ed6" stroke-width="2"/>
-                <!-- upper forehead symbol (post-human rune) -->
-                <path d="M115 65 L120 50 L125 65 L140 62 L125 72 L120 84 L115 72 L100 62 Z" fill="#c597ff" opacity="0.5"/>
+                <!-- main mask shape (broken symmetry, post-human) -->
+                <path d="M62 95 L55 140 L70 170 L92 195 L110 200 L128 195 L150 170 L165 140 L158 95 L140 68 L110 55 L80 68 L62 95Z" fill="url(#maskMetal)" stroke="#cfadff" stroke-width="2.2" filter="url(#edgeGlow)"/>
+                <!-- left eye socket (scarred) -->
+                <circle cx="89" cy="115" r="12" fill="#010001" stroke="#bc93ff" stroke-width="2"/>
+                <path d="M83 115 L91 112 L97 115 L91 121 L85 118 Z" fill="#fedca0" opacity="0.85"/>
+                <!-- right eye (bionic slit) -->
+                <ellipse cx="133" cy="117" rx="11" ry="9" fill="#010001" stroke="#b785ff" stroke-width="2"/>
+                <path d="M128 115 L135 112 L141 116 L135 120 Z" fill="#ffe2ac" opacity="0.9"/>
+                <!-- ritual cracks / cybernetic grafts -->
+                <line x1="66" y1="135" x2="80" y2="145" stroke="#b17be6" stroke-width="2.4" stroke-linecap="round"/>
+                <line x1="154" y1="135" x2="140" y2="145" stroke="#b17be6" stroke-width="2.4" stroke-linecap="round"/>
+                <!-- nasal implant (triangular plate) -->
+                <polygon points="105,170 110,185 115,170" fill="#1f0f2c" stroke="#bb95ff" stroke-width="1.5"/>
+                <!-- mouth / vent grid -->
+                <path d="M98 195 L110 205 L122 195" stroke="#cfaeff" stroke-width="2" fill="none"/>
+                <line x1="104" y1="200" x2="116" y2="200" stroke="#cfaeff" stroke-width="1.5"/>
+                <!-- upper scar rune -->
+                <path d="M110 65 L114 55 L118 65 L126 58 L120 68 L114 72 L108 68 L102 58 Z" fill="#c4a2fa" opacity="0.6"/>
             </svg>
         </div>
     </div>
 
-    <!-- complete discography: 10 albums/tracks from PDF, with bandcamp embed (where available) -->
-    <div class="release-grid">
-        <!-- 1. 500 Seconds of Dying - Album embed -->
-        <div class="release-card">
+    <!-- COMPLETE DISCOGRAPHY from PDF (embed + physical note) -->
+    <div class="discography">
+        <!-- 1. 500 Seconds of Dying (album) -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">500 Seconds of Dying</span>
-                <span class="label-badge">full-length · LP</span>
+                <div class="release-name">500 Seconds of Dying</div>
+                <div class="release-tag">album · ritual decay</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=4266937104/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
             </div>
         </div>
 
-        <!-- 2. Atmosfer - Album -->
-        <div class="release-card">
+        <!-- 2. Atmosfer (album) -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Atmosfer</span>
-                <span class="label-badge">album</span>
+                <div class="release-name">Atmosfer</div>
+                <div class="release-tag">album · atmospheric collapse</div>
             </div>
             <div class="embed-wrapper">
-                <iframe style="border:0; width:100%; height:120px;" src="https://karnivulgar.bandcamp.com/album/500-seconds-of-dying" seamless></iframe>
+                <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=4197768834/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
             </div>
         </div>
 
-        <!-- 3. Nevertheless - Album -->
-        <div class="release-card">
+        <!-- 3. Nevertheless (album) -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Nevertheless</span>
-                <span class="label-badge">album</span>
+                <div class="release-name">Nevertheless</div>
+                <div class="release-tag">album · endurance</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=184555432/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
             </div>
         </div>
 
-        <!-- 4. Atmosfer B‑Side (CD only, physical release) – No embed, but still listed as part of the index -->
-        <div class="release-card">
+        <!-- 4. Atmosfer B‑Side (CD only, physical archive) -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Atmosfer B‑Side</span>
-                <span class="label-badge">CD only · physical artefact</span>
+                <div class="release-name">Atmosfer B‑Side</div>
+                <div class="release-tag">CD only · physical relic</div>
             </div>
-            <div class="physical-note">⚡ CD exclusive · limited edition · no digital stream — part of the post-human archive</div>
+            <div class="physical-note">◉ EXCLUSIVE CD EDITION — not available for streaming. part of the post‑human archive at Wisma Jerman exhibit.</div>
         </div>
 
-        <!-- 5. Indonesia Japan Noise Split (track: Karnivulgar / Angel Kandanane) -->
-        <div class="release-card">
+        <!-- 5. Indonesia Japan Noise Split (Karnivulgar / Angel Kandanane) track -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Indonesia Japan Noise Split · Karnivulgar / Angel Kandanane</span>
-                <span class="label-badge">split track</span>
+                <div class="release-name">Indonesia Japan Noise Split · Karnivulgar / Angel Kandanane</div>
+                <div class="release-tag">split track</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=2829539864/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
@@ -363,43 +349,43 @@
         </div>
 
         <!-- 6. Deathmatch (Engram Recordings) -->
-        <div class="release-card">
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Deathmatch</span>
-                <span class="label-badge">album · engram recordings</span>
+                <div class="release-name">Deathmatch</div>
+                <div class="release-tag">engram recordings · album</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=944924332/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
             </div>
         </div>
 
-        <!-- 7. Orbital Chamber (split with I,Eternal) -->
-        <div class="release-card">
+        <!-- 7. Orbital Chamber (split with I,Eternal) track -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Orbital Chamber (split with I,Eternal)</span>
-                <span class="label-badge">track · def radio</span>
+                <div class="release-name">Orbital Chamber (split with I,Eternal)</div>
+                <div class="release-tag">def radio · track</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4080631106/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
             </div>
         </div>
 
-        <!-- 8. Terjebak (Silent Method Records) -->
-        <div class="release-card">
+        <!-- 8. Terjebak (Silent Method Records) album -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Terjebak</span>
-                <span class="label-badge">album · silent method</span>
+                <div class="release-name">Terjebak</div>
+                <div class="release-tag">silent method · album</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=4037547507/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
             </div>
         </div>
 
-        <!-- 9. Punch Lines! (split with Abiboss) -->
-        <div class="release-card">
+        <!-- 9. Punch Lines! (split with Abiboss) track -->
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Punch Lines! (split with Abiboss)</span>
-                <span class="label-badge">track · def radio</span>
+                <div class="release-name">Punch Lines! (split with Abiboss)</div>
+                <div class="release-tag">split track · def radio</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1685452026/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
@@ -407,10 +393,10 @@
         </div>
 
         <!-- 10. Rood Lleh, Mlaer fo Kcarc Eht (track) -->
-        <div class="release-card">
+        <div class="release">
             <div class="release-header">
-                <span class="release-name">Rood Lleh, Mlaer fo Kcarc Eht</span>
-                <span class="label-badge">ritual track</span>
+                <div class="release-name">Rood Lleh, Mlaer fo Kcarc Eht</div>
+                <div class="release-tag">ritual track</div>
             </div>
             <div class="embed-wrapper">
                 <iframe style="border:0; width:100%; height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=2423197121/size=large/bgcol=0a0a0f/linkcol=bc9bff/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
@@ -418,12 +404,11 @@
         </div>
     </div>
 
-    <!-- FINAL POSTER ELEGANCE / EXHIBITION FOOTER -->
-    <div class="exhibition-footer">
-        <p>◉ POST-HUMAN SOUND ARCHIVE ◉</p>
-        <p>complete index of sonic decay · all works embedded from original Bandcamp sources</p>
-        <p class="glow-text">└ KARNIVULGAR · WISMA JERMAN, 21–23 MEI 2026 ┘</p>
-        <p style="font-size: 0.65rem; margin-top: 1rem;">mask design — industrial ritual relic | font: major mono + space grotesk</p>
+    <!-- POSTER FOOTER -->
+    <div class="poster-footer">
+        <span>⟡ POST-HUMAN SOUND INDEX ⟡</span><br>
+        full discography embedded · bandcamp originals<br>
+        <span>KARNIVULGAR // 21–23 MEI 2026 // WISMA JERMAN</span>
     </div>
 </div>
 </body>
