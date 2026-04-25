@@ -22,11 +22,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Creates a slight glow on all text */
             text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); 
         }
 
-        /* CRT Scanline Effect */
         .scanlines {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -47,16 +45,13 @@
             max-width: 800px;
         }
 
-        /* Mask Image Styling */
         .mask-container {
             margin-bottom: 20px;
         }
 
         .mask-silhouette {
             max-width: 250px;
-            /* Forces a low-res pixelated rendering if the image is scaled */
             image-rendering: pixelated; 
-            /* CSS trick: Turns the transparent PNG into a glowing green silhouette */
             filter: brightness(0) drop-shadow(0 0 8px var(--matrix-green));
             background-color: var(--matrix-green);
             -webkit-mask-image: url('mask.png');
@@ -107,18 +102,23 @@
         }
 
         li.track {
-            font-size: 1.6rem;
-            margin: 12px 0;
-            display: flex;
-            align-items: center;
-            border-left: 3px solid transparent;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid var(--dark-green);
+            background: rgba(0, 143, 17, 0.05);
             transition: all 0.2s;
-            padding-left: 10px;
         }
 
         li.track:hover {
-            border-left: 3px solid var(--matrix-green);
+            border: 1px solid var(--matrix-green);
             background: rgba(0, 255, 65, 0.1);
+        }
+
+        .track-header {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
 
         .index {
@@ -127,26 +127,33 @@
             min-width: 40px;
         }
 
-        a {
+        .title {
             color: var(--matrix-green);
-            text-decoration: none;
             flex-grow: 1;
         }
 
-        a:hover {
-            color: #fff;
-            text-shadow: 0 0 8px #fff;
+        .embed-container {
+            width: 100%;
+            /* Adds a subtle glow to the player itself */
+            filter: drop-shadow(0 0 3px var(--matrix-green)); 
         }
 
-        .status {
-            font-size: 1.2rem;
-            margin-left: 15px;
+        /* Ensures Bandcamp iframes stretch cleanly */
+        .embed-container iframe {
+            width: 100%;
+            height: 42px; /* Standard height for Bandcamp slim player */
+            border: 0;
         }
 
         .cd-only {
             color: #555;
             flex-grow: 1;
             text-decoration: line-through;
+        }
+
+        .status {
+            font-size: 1.2rem;
+            margin-left: 15px;
         }
 
         .status.offline {
@@ -160,11 +167,9 @@
             50% { opacity: 0.3; }
         }
 
-        /* Responsive adjustments */
         @media (max-width: 600px) {
             h1 { font-size: 2.5rem; }
-            li.track { font-size: 1.2rem; flex-wrap: wrap; }
-            .status { margin-left: 0; width: 100%; text-align: right; }
+            .track-header { font-size: 1.2rem; flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -185,56 +190,105 @@
     <main>
         <div class="directory-header">C:\KARNIVULGAR\AUDIO_ARCHIVE> DIR</div>
         <ul class="track-list">
+            
             <li class="track">
-                <span class="index"></span>
-                <a href="https://karnivulgar.bandcamp.com/album/500-seconds-of-dying" target="_blank">500 Seconds of Dying</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">500 Seconds of Dying</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://karnivulgar.bandcamp.com/album/atmosfer-2" target="_blank">Atmosfer</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Atmosfer</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://karnivulgar.bandcamp.com/album/nevertheless" target="_blank">Nevertheless</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Nevertheless</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
+            <li class="track" style="background: transparent; border-color: #333;">
+                <div class="track-header" style="margin-bottom: 0;">
+                    <span class="index" style="color: #333;"></span>
+                    <span class="cd-only">Atmosfer B-Side</span>
+                    <span class="status offline">[PHYSICAL_CD_ONLY]</span>
+                </div>
+            </li>
+
             <li class="track">
-                <span class="index"></span>
-                <span class="cd-only">Atmosfer B-Side</span>
-                <span class="status offline">[PHYSICAL_CD_ONLY]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Indonesia Japan Noise Split</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://tarungrecs.bandcamp.com/track/karnivulgar-angel-kandanane" target="_blank">Indonesia Japan Noise Split</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Deathmatch</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://engramrecordings.bandcamp.com/album/deathmatch" target="_blank">Deathmatch</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Orbital Chamber (split with I,Eternal)</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://defnradio.bandcamp.com/album/orbital-chamber" target="_blank">Orbital Chamber (split with I,Eternal)</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Terjebak</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://silentmethodrecords.bandcamp.com/album/terjebak" target="_blank">Terjebak</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Punch Lines! (split with Abiboss)</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
+
             <li class="track">
-                <span class="index"></span>
-                <a href="https://defnradio.bandcamp.com/track/terasing" target="_blank">Punch Lines! (split with Abiboss)</a>
-                <span class="status">[STREAM]</span>
+                <div class="track-header">
+                    <span class="index"></span>
+                    <span class="title">Rood Lleh, Mlaer fo Kcarc Eht</span>
+                </div>
+                <div class="embed-container">
+                    <p style="font-size: 1rem; color: #555; margin: 0;">[Awaiting Bandcamp Iframe...]</p>
+                </div>
             </li>
-            <li class="track">
-                <span class="index"></span>
-                <a href="https://karnivulgar.bandcamp.com/track/rood-lleh-mlaer-fo-kcarc-eht" target="_blank">Rood Lleh, Mlaer fo Kcarc Eht</a>
-                <span class="status">[STREAM]</span>
-            </li>
+
         </ul>
     </main>
 </body>
