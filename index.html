@@ -52,7 +52,7 @@
         .mask-silhouette {
             max-width: 250px;
             image-rendering: pixelated; 
-            filter: brightness(0) drop-shadow(0 0 8px var(--matrix-green));
+            filter: brightness(5) drop-shadow(0 0 8px var(--matrix-green));
             background-color: var(--matrix-green);
             -webkit-mask-image: url('mask.png');
             -webkit-mask-size: contain;
@@ -74,6 +74,12 @@
             padding-bottom: 10px;
         }
 
+        .korslet {
+            color: #050505;
+            text-shadow: 0 0 5px rgba(255, 0, 60, 0.6);
+            animation: blink 0.5s infinite;
+        }
+        
         .sys-info {
             color: var(--dark-green);
             font-size: 1.5rem;
@@ -182,7 +188,7 @@
         </div>
         <h1>POST-HUMAN ERA</h1>
         <h2>a showcase by Karnivulgar</h2>
-        <h3>Post-Human Era is not an exhibition but a system in transition. Through noise, rupture, and visual fragments, it maps the erosion of human centrality. This repository contains traces, structures, and unstable documentation.</h3>
+        <h3><span class="korslet">Post-Human Era is not an exhibition but a system in transition. Through noise, rupture, and visual fragments, it maps the erosion of human centrality. This repository contains traces, structures, and unstable documentation.</h3>
         <div class="sys-info">
             LOC: WISMA_JERMAN // SBY<br>
             DAT: 21-23_MEI_2026 // SYSTEM_ACTIVE
