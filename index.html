@@ -72,8 +72,18 @@
             letter-spacing: 2px;
             border-bottom: 2px dashed var(--dark-green);
             padding-bottom: 10px;
+            animation: rupture 6s infinite; /* The glitch triggers briefly every 6 seconds */
         }
-
+    
+        /* 1. Rupture Point: Violent text distortion */
+@keyframes rupture {
+    0%, 96% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); letter-spacing: 2px; }
+    97% { transform: skew(25deg); text-shadow: -4px 0 #ff003c, 4px 0 #0000ff; letter-spacing: -3px; }
+    98% { transform: skew(-20deg); text-shadow: 3px 0 var(--matrix-green), -3px 0 #fff; }
+    99% { transform: skew(10deg); text-shadow: -2px 0 #ff003c; letter-spacing: 5px; }
+    100% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); letter-spacing: 2px; }
+}
+        
         .korslet {
             color: var(--dark-green);
             text-shadow: 0 0 5px rgba(255, 0, 60, 0.6);
@@ -94,27 +104,52 @@
             margin-bottom: 100px;
         }
 
-        .directory-header {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #fff;
-            text-shadow: 0 0 5px #fff;
-        }
+        /* 2. Fragment Layer: Chromatic text ghosting */
+.directory-header {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 5px #fff;
+    position: relative;
+    display: inline-block;
+}
+
+/* Creates the broken, half-visible red offset */
+.directory-header::after {
+    content: "C:\\KARNIVULGAR\\AUDIO_ARCHIVE> DIR";
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    color: rgba(255, 0, 60, 0.6); 
+    opacity: 0.8;
+    z-index: -1;
+    pointer-events: none;
+    /* This cuts the duplicate text in half horizontally */
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); 
+}
 
         ul.track-list {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
-
+        
         li.track {
             margin: 20px 0;
             padding: 10px;
             border: 1px solid var(--dark-green);
             background: rgba(0, 143, 17, 0.05);
             transition: all 0.2s;
+            opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    /* ... keep your existing li.track styles ... */
         }
 
+        li.track.system-loaded {
+    opacity: 1;
+    transform: translateX(0);
+}
         li.track:hover {
             border: 1px solid var(--matrix-green);
             background: rgba(0, 255, 65, 0.1);
@@ -299,5 +334,20 @@
 
         </ul>
     </main>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tracks = document.querySelectorAll('.track');
+        
+        tracks.forEach((track, index) => {
+            // Calculates a baseline delay + a random stutter
+            const baseDelay = index * 150; 
+            const unpredictableLag = Math.random() * 600; 
+            
+            setTimeout(() => {
+                track.classList.add('system-loaded');
+            }, baseDelay + unpredictableLag);
+        });
+    });
+</script>
 </body>
 </html>
