@@ -16,193 +16,91 @@
             background-color: var(--bg-color);
             color: var(--matrix-green);
             font-family: 'VT323', monospace;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 0; padding: 0; overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center;
             text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); 
         }
 
         .scanlines {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.25) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
-            z-index: 100;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%; z-index: 100; pointer-events: none;
         }
 
         header {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 40px;
-            width: 100%;
-            max-width: 800px;
+            text-align: center; margin-top: 50px; margin-bottom: 40px;
+            width: 100%; max-width: 800px;
         }
 
-        .mask-container {
-            margin-bottom: 20px;;
-        }
+        /* 1. Rupture Point: The Pixel Mask Artifact */
+        .mask-container { margin-bottom: -15px; } /* Tightens spacing to title */
 
-        .mask-silhouette {
+        .mask-artifact {
             max-width: 250px;
             height: auto;
             image-rendering: pixelated; /* Forces sharp pixels on scale */
             filter: drop-shadow(0 0 8px var(--matrix-green)); /* Green glow */
-            
+        }
+
+        /* Large Typography Glitch (GPT suggestion applied to H1) */
+        @keyframes rupture {
+            0%, 96% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); }
+            97% { transform: skew(20deg); text-shadow: -4px 0 #ff003c, 4px 0 #0000ff; letter-spacing: -3px; }
+            98% { transform: skew(-15deg); text-shadow: 3px 0 var(--matrix-green), -3px 0 #fff; }
+            99% { transform: skew(5deg); text-shadow: -2px 0 #ff003c; letter-spacing: 5px; }
+            100% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); }
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            letter-spacing: 2px;
-            border-bottom: 2px dashed var(--dark-green);
-            padding-bottom: 10px;
-            animation: rupture 6s infinite; /* The glitch triggers briefly every 6 seconds */
-        }
-    
-        /* 1. Rupture Point: Violent text distortion */
-@keyframes rupture {
-    0%, 96% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); letter-spacing: 2px; }
-    97% { transform: skew(25deg); text-shadow: -4px 0 #ff003c, 4px 0 #0000ff; letter-spacing: -3px; }
-    98% { transform: skew(-20deg); text-shadow: 3px 0 var(--matrix-green), -3px 0 #fff; }
-    99% { transform: skew(10deg); text-shadow: -2px 0 #ff003c; letter-spacing: 5px; }
-    100% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); letter-spacing: 2px; }
-}
-        
-        .korslet {
-            color: var(--dark-green);
-            text-shadow: 0 0 5px rgba(255, 0, 60, 0.6);
-            animation: blink 0.5s infinite;
-        }
-        
-        .sys-info {
-            color: var(--dark-green);
-            font-size: 1.5rem;
-            margin-top: 10px;
+            font-size: 4rem; /* Huge Typography */
+            margin: 0; letter-spacing: 2px;
+            border-bottom: 2px dashed var(--dark-green); padding-bottom: 10px;
+            animation: rupture 6.5s infinite;
         }
 
-        main {
-            width: 100%;
-            max-width: 700px;
-            padding: 0 20px;
-            box-sizing: border-box;
-            margin-bottom: 100px;
-        }
+        .sys-info { color: var(--dark-green); font-size: 1.5rem; margin-top: 10px; }
+
+        main { width: 100%; max-width: 700px; padding: 0 20px; box-sizing: border-box; margin-bottom: 100px; }
 
         /* 2. Fragment Layer: Chromatic text ghosting */
-.directory-header {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 0 0 5px #fff;
-    position: relative;
-    display: inline-block;
-}
-
-/* Creates the broken, half-visible red offset */
-.directory-header::after {
-    content: "C:\\KARNIVULGAR\\AUDIO_ARCHIVE> DIR";
-    position: absolute;
-    left: 3px;
-    top: 2px;
-    color: rgba(255, 0, 60, 0.6); 
-    opacity: 0.8;
-    z-index: -1;
-    pointer-events: none;
-    /* This cuts the duplicate text in half horizontally */
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); 
-}
-
-        ul.track-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+        .directory-header {
+            font-size: 1.8rem; margin-bottom: 20px; color: #fff;
+            text-shadow: 0 0 5px #fff; position: relative; display: inline-block;
         }
-        
+
+        .directory-header::after {
+            content: "C:\\KARNIVULGAR\\AUDIO_ARCHIVE> DIR";
+            position: absolute; left: 3px; top: 2px;
+            color: rgba(255, 0, 60, 0.6); opacity: 0.8; z-index: -1; pointer-events: none;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); 
+        }
+
+        ul.track-list { list-style-type: none; padding: 0; margin: 0; }
+
+        /* 3. Temporal Behavior (Pre-load CSS) */
         li.track {
-            margin: 20px 0;
-            padding: 10px;
-            border: 1px solid var(--dark-green);
-            background: rgba(0, 143, 17, 0.05);
-            transition: all 0.2s;
-            opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-    /* ... keep your existing li.track styles ... */
+            opacity: 0; transform: translateX(-10px);
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+            margin: 20px 0; padding: 10px; border: 1px solid var(--dark-green);
+            background: rgba(0, 143, 17, 0.05); transition: all 0.2s;
         }
 
-        li.track.system-loaded {
-    opacity: 1;
-    transform: translateX(0);
-}
-        li.track:hover {
-            border: 1px solid var(--matrix-green);
-            background: rgba(0, 255, 65, 0.1);
-        }
+        li.track.system-loaded { opacity: 1; transform: translateX(0); }
 
-        .track-header {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .index {
-            color: var(--dark-green);
-            margin-right: 15px;
-            min-width: 40px;
-        }
-
-        .title {
-            color: var(--matrix-green);
-            flex-grow: 1;
-        }
-
-        .embed-container {
-            width: 100%;
-            /* Adds a subtle glow to the player itself */
-            filter: drop-shadow(0 0 3px var(--matrix-green)); 
-        }
-
-        /* Ensures Bandcamp iframes stretch cleanly */
-        .embed-container iframe {
-            width: 100%;
-            height: 42px; /* Standard height for Bandcamp slim player */
-            border: 0;
-        }
-
-        .cd-only {
-            color: #555;
-            flex-grow: 1;
-            text-decoration: line-through;
-        }
-
-        .status {
-            font-size: 1.2rem;
-            margin-left: 15px;
-        }
-
+        li.track:hover { border: 1px solid var(--matrix-green); background: rgba(0, 255, 65, 0.1); }
+        .track-header { font-size: 1.6rem; margin-bottom: 10px; display: flex; align-items: center; }
+        .index { color: var(--dark-green); margin-right: 15px; min-width: 40px; }
+        .title { color: var(--matrix-green); flex-grow: 1; }
+        .embed-container { width: 100%; filter: drop-shadow(0 0 3px var(--matrix-green)); }
+        .embed-container iframe { width: 100%; height: 42px; border: 0; }
+        .cd-only { color: #555; flex-grow: 1; text-decoration: line-through; }
+        .status { font-size: 1.2rem; margin-left: 15px; }
         .status.offline {
-            color: #ff003c;
-            text-shadow: 0 0 5px rgba(255, 0, 60, 0.6);
-            animation: blink 2s infinite;
+            color: #ff003c; text-shadow: 0 0 5px rgba(255, 0, 60, 0.6); animation: blink 2s infinite;
         }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .track-header { font-size: 1.2rem; flex-wrap: wrap; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @media (max-width: 600px) { h1 { font-size: 2.8rem; } .track-header { font-size: 1.2rem; flex-wrap: wrap; } }
     </style>
 </head>
 <body>
@@ -210,7 +108,7 @@
 
     <header>
         <div class="mask-container">
-            <div class="mask-silhouette"></div>
+            <img src="mask_artifact.png" alt="POST-HUMAN MASK ARTIFACT" class="mask-artifact">
         </div>
         <h1>POST-HUMAN ERA</h1>
         <h2>a showcase by Karnivulgar</h2>
