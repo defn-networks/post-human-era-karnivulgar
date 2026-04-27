@@ -46,14 +46,14 @@
         }
 
         .mask-container {
-            margin-bottom: 20px;
+            margin-bottom: -15px;;
         }
 
         .mask-silhouette {
             max-width: 250px;
-            image-rendering: pixelated; 
-            filter: brightness(1) drop-shadow(0 0 8px var(--matrix-green));
-            background-color: var(--matrix-green);
+            height: auto;
+            image-rendering: pixelated; /* Forces sharp pixels on scale */
+            filter: drop-shadow(0 0 8px var(--matrix-green)); /* Green glow */
             -webkit-mask-image: url('mask.png');
             -webkit-mask-size: contain;
             -webkit-mask-repeat: no-repeat;
