@@ -19,6 +19,7 @@
             margin: 0; padding: 0; overflow-x: hidden;
             display: flex; flex-direction: column; align-items: center;
             text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); 
+            position: relative;
         }
 
         .scanlines {
@@ -28,22 +29,82 @@
             background-size: 100% 4px, 3px 100%; z-index: 100; pointer-events: none;
         }
 
+        /* ----- INDUSTRIAL ACCENTS (added without breaking design) ----- */
+        .accent {
+            position: fixed;
+            font-family: 'VT323', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.2rem 0.6rem;
+            color: var(--dark-green);
+            border-left: 2px solid var(--matrix-green);
+            z-index: 200;
+            pointer-events: none;
+            white-space: nowrap;
+            text-shadow: none;
+        }
+        .accent-top-left {
+            top: 12px;
+            left: 12px;
+        }
+        .accent-top-right {
+            top: 12px;
+            right: 12px;
+            border-left: none;
+            border-right: 2px solid var(--matrix-green);
+            text-align: right;
+        }
+        .accent-bottom-left {
+            bottom: 12px;
+            left: 12px;
+        }
+        .accent-bottom-right {
+            bottom: 12px;
+            right: 12px;
+            border-left: none;
+            border-right: 2px solid var(--matrix-green);
+            text-align: right;
+        }
+        /* measurement strip behind mask (subtle) */
+        .specimen-strip {
+            position: relative;
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 5px;
+            color: var(--dark-green);
+            letter-spacing: 1.5px;
+            background: rgba(0,0,0,0.5);
+            display: inline-block;
+            padding: 0.1rem 0.8rem;
+            border-radius: 0;
+            border-top: 1px solid var(--matrix-green);
+            border-bottom: 1px solid var(--matrix-green);
+            transform: rotate(-1deg);
+        }
+        /* adjust mask container to hold strip */
+        .mask-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: -10px;
+        }
+
         header {
             text-align: center; margin-top: 50px; margin-bottom: 40px;
             width: 100%; max-width: 800px;
         }
 
         /* 1. Rupture Point: The Pixel Mask Artifact */
-        .mask-container { margin-bottom: -10px; } /* Tightens spacing to title */
-
         .mask-artifact {
             max-width: 250px;
             height: auto;
-            image-rendering: pixelated; /* Forces sharp pixels on scale */
-            filter: drop-shadow(0 0 8px var(--matrix-green)); /* Green glow */
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 8px var(--matrix-green));
         }
 
-        /* Large Typography Glitch (GPT suggestion applied to H1) */
+        /* Large Typography Glitch */
         @keyframes rupture {
             0%, 96% { transform: skew(0deg); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); }
             97% { transform: skew(20deg); text-shadow: -4px 0 #ff003c, 4px 0 #0000ff; letter-spacing: -3px; }
@@ -53,7 +114,7 @@
         }
 
         h1 {
-            font-size: 4rem; /* Huge Typography */
+            font-size: 4rem;
             margin: 0; letter-spacing: 2px;
             border-bottom: 2px dashed var(--dark-green); padding-bottom: 10px;
             animation: rupture 6.5s infinite;
@@ -63,7 +124,6 @@
 
         main { width: 100%; max-width: 700px; padding: 0 20px; box-sizing: border-box; margin-bottom: 100px; }
 
-        /* 2. Fragment Layer: Chromatic text ghosting */
         .directory-header {
             font-size: 1.8rem; margin-bottom: 20px; color: #fff;
             text-shadow: 0 0 5px #fff; position: relative; display: inline-block;
@@ -78,7 +138,6 @@
 
         ul.track-list { list-style-type: none; padding: 0; margin: 0; }
 
-        /* 3. Temporal Behavior (Pre-load CSS) */
         li.track {
             opacity: 0; transform: translateX(-10px);
             transition: opacity 0.2s ease-out, transform 0.2s ease-out;
@@ -103,19 +162,31 @@
             color: #ff003c; text-shadow: 0 0 5px rgba(255, 0, 60, 0.6); animation: blink 2s infinite;
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        @media (max-width: 600px) { h1 { font-size: 2.8rem; } .track-header { font-size: 1.2rem; flex-wrap: wrap; } }
+        @media (max-width: 600px) { 
+            h1 { font-size: 2.8rem; } 
+            .track-header { font-size: 1.2rem; flex-wrap: wrap; }
+            .accent { font-size: 0.6rem; padding: 0.1rem 0.4rem; }
+        }
     </style>
 </head>
 <body>
     <div class="scanlines"></div>
 
+    <!-- INDUSTRIAL ACCENTS: codes from your image, placed as fixed corner elements -->
+    <div class="accent accent-top-left">MEM FA1345</div>
+    <div class="accent accent-top-right">L1.3459 // L2.8658</div>
+    <div class="accent accent-bottom-left">CAL: 05/26 // V.3</div>
+    <div class="accent accent-bottom-right">ARCHIVE :: POST-HUMAN</div>
+
     <header>
         <div class="mask-container">
+            <!-- measurement strip placed just above the mask -->
+            <div class="specimen-strip">SPECIMEN REF: MEM // FA1345 // L1.3459</div>
             <img src="mask_artifact.png" alt="POST-HUMAN MASK ARTIFACT" class="mask-artifact">
         </div>
         <h1>POST-HUMAN ERA</h1>
         <h2>a showcase by Karnivulgar</h2>
-        <h3><span class="korslet">Post-Human Era is not an exhibition but a system in transition. Through noise, rupture, and visual fragments, it maps the erosion of human centrality. This repository contains traces, structures, and unstable documentation.</h3>
+        <h3><span class="korslet">Post-Human Era is not an exhibition but a system in transition. Through noise, rupture, and visual fragments, it maps the erosion of human centrality. This repository contains traces, structures, and unstable documentation.</span></h3>
         <div class="sys-info">
             LOC: WISMA_JERMAN // SBY<br>
             DAT: 21-23_MEI_2026 // SYSTEM_ACTIVE
@@ -125,7 +196,6 @@
     <main>
         <div class="directory-header">C:\KARNIVULGAR\AUDIO_ARCHIVE> DIR</div>
         <ul class="track-list">
-            
             <li class="track">
                 <div class="track-header">
                     <span class="index"></span>
@@ -223,24 +293,21 @@
                     <p style="font-size: 1rem; color: #555; margin: 0;"><iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/track=4090635045/size=small/bgcol=050505/linkcol=00FF41/transparent=true/" seamless><a href="https://karnivulgar.bandcamp.com/track/rood-lleh-mlaer-fo-kcarc-eht">Rood Lleh, Mlaer fo Kcarc Eht by Karnivulgar</a></iframe></p>
                 </div>
             </li>
-
         </ul>
     </main>
     <center><p>2026 - karnivulgar - def-n networks / lantai dua studio - wisma jerman - goethe institut</p></center>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const tracks = document.querySelectorAll('.track');
-        
-        tracks.forEach((track, index) => {
-            // Calculates a baseline delay + a random stutter
-            const baseDelay = index * 150; 
-            const unpredictableLag = Math.random() * 600; 
-            
-            setTimeout(() => {
-                track.classList.add('system-loaded');
-            }, baseDelay + unpredictableLag);
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tracks = document.querySelectorAll('.track');
+            tracks.forEach((track, index) => {
+                const baseDelay = index * 150; 
+                const unpredictableLag = Math.random() * 600; 
+                setTimeout(() => {
+                    track.classList.add('system-loaded');
+                }, baseDelay + unpredictableLag);
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
